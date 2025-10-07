@@ -424,7 +424,11 @@ export default function Home() {
                     alt={client.name}
                     width={150}
                     height={80}
-                    className="w-full h-auto max-h-20 object-contain filter brightness-0 invert"
+                    className="w-full h-auto max-h-20 object-contain"
+                    style={{ 
+                      filter: 'brightness(0) invert(1)',
+                      WebkitFilter: 'brightness(0) invert(1)'
+                    }}
                   />
                 </a>
               </motion.div>
