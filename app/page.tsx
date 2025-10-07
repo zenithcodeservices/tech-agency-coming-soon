@@ -167,12 +167,13 @@ export default function Home() {
   ]
 
   const clients = [
-    { name: "AWS", logo: "/companies/aws.avif" },
-    { name: "Bank of America", logo: "/companies/bank of america.webp" },
-    { name: "Beatport", logo: "/companies/Beatport-Black.png" },
-    { name: "Evora", logo: "/companies/Evora-Main-Logo-1.webp" },
-    { name: "Longevity Partners", logo: "/companies/partner-longevity-partners-1-scaled.png" },
-    { name: "Recycling Alternative", logo: "/companies/RecyclingAlternative-Logo.avif" },
+    { name: "AWS", logo: "/companies/aws.avif", url: "https://aws.amazon.com/" },
+    { name: "Bank of America", logo: "/companies/bank of america.webp", url: "https://www.bankofamerica.com/" },
+    { name: "Beatport", logo: "/companies/Beatport-Black.png", url: "https://www.beatport.com/" },
+    { name: "Evora", logo: "/companies/Evora-Main-Logo-1.webp", url: "https://evoraglobal.com/" },
+    { name: "Longevity Partners", logo: "/companies/partner-longevity-partners-1-scaled.png", url: "https://longevity-partners.com/" },
+    { name: "Recycling Alternative", logo: "/companies/RecyclingAlternative-Logo.avif", url: "https://recyclingalternative.com/" },
+    { name: "Terrible Music Group", logo: "/companies/terrible.webp", url: "https://www.terrible.group/" },
   ]
 
   return (
@@ -411,7 +412,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100"
               >
-                <div className="relative w-full h-20 flex items-center justify-center bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-colors">
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full h-20 flex items-center justify-center bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-colors cursor-pointer"
+                  aria-label={`Visit ${client.name} website`}
+                >
                   <Image
                     src={client.logo}
                     alt={client.name}
@@ -420,7 +427,7 @@ export default function Home() {
                     className="w-full h-auto max-h-16 object-contain"
                     style={{ filter: 'brightness(0) invert(1)' }}
                   />
-                </div>
+                </a>
               </motion.div>
             ))}
           </div>
