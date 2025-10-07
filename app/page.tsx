@@ -167,7 +167,7 @@ export default function Home() {
   ]
 
   const clients = [
-    { name: "AWS", logo: "/companies/aws.png", url: "https://aws.amazon.com/" },
+    { name: "AWS", logo: "/companies/awsv2.png", url: "https://aws.amazon.com/" },
     { name: "Bank of America", logo: "/companies/bofa.png", url: "https://www.bankofamerica.com/" },
     { name: "Beatport", logo: "/companies/Beatport-Black.png", url: "https://www.beatport.com/" },
     { name: "Evora", logo: "/companies/Evora-Main-Logo-1.webp", url: "https://evoraglobal.com/" },
@@ -424,11 +424,8 @@ export default function Home() {
                     alt={client.name}
                     width={150}
                     height={80}
-                    className="w-full h-auto max-h-20 object-contain"
-                    style={{ 
-                      filter: 'brightness(0) invert(1)',
-                      WebkitFilter: 'brightness(0) invert(1)'
-                    }}
+                    className="w-full h-auto max-h-20 object-contain filter brightness-0 invert"
+                    style={{ width: 'auto', height: 'auto' }}
                   />
                 </a>
               </motion.div>
