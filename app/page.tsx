@@ -386,7 +386,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Client Logos Section */}
+      {/* Companies Section */}
       <section className="py-24 bg-[#1a1a1a] text-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
@@ -397,7 +397,7 @@ export default function Home() {
             className="mb-20"
           >
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight text-gray-300 mb-4">
-              Our clients
+              Companies we've worked with
             </h2>
           </motion.div>
 
@@ -409,16 +409,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                className="flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100"
               >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={150}
-                  height={80}
-                  className="w-full h-auto max-h-20 object-contain filter brightness-0 invert"
-                  style={{ mixBlendMode: "lighten" }}
-                />
+                <div className="relative w-full h-20 flex items-center justify-center bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-colors">
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={150}
+                    height={80}
+                    className="w-full h-auto max-h-16 object-contain"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
