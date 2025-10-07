@@ -410,13 +410,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100"
+                className="flex items-center justify-center transition-all duration-300 opacity-70 hover:opacity-100"
               >
                 <a
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-full h-20 flex items-center justify-center bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-colors cursor-pointer"
+                  className="block w-full"
                   aria-label={`Visit ${client.name} website`}
                 >
                   <Image
@@ -424,8 +424,7 @@ export default function Home() {
                     alt={client.name}
                     width={150}
                     height={80}
-                    className="w-full h-auto max-h-16 object-contain"
-                    style={{ filter: 'brightness(0) invert(1)' }}
+                    className="w-full h-auto max-h-20 object-contain filter brightness-0 invert"
                   />
                 </a>
               </motion.div>
