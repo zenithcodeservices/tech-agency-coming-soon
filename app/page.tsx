@@ -167,8 +167,8 @@ export default function Home() {
   ]
 
   const clients = [
-    { name: "AWS", logo: "/companies/aws.avif", url: "https://aws.amazon.com/" },
-    { name: "Bank of America", logo: "/companies/bank of america.webp", url: "https://www.bankofamerica.com/" },
+    { name: "AWS", logo: "/companies/aws.png", url: "https://aws.amazon.com/" },
+    { name: "Bank of America", logo: "/companies/bofa.png", url: "https://www.bankofamerica.com/" },
     { name: "Beatport", logo: "/companies/Beatport-Black.png", url: "https://www.beatport.com/" },
     { name: "Evora", logo: "/companies/Evora-Main-Logo-1.webp", url: "https://evoraglobal.com/" },
     { name: "Longevity Partners", logo: "/companies/partner-longevity-partners-1-scaled.png", url: "https://longevity-partners.com/" },
