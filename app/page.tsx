@@ -167,8 +167,8 @@ export default function Home() {
   ]
 
   const clients = [
-    { name: "AWS", logo: "/companies/awsv2.png", url: "https://aws.amazon.com/" },
     { name: "Bank of America", logo: "/companies/bofa.png", url: "https://www.bankofamerica.com/" },
+    { name: "AWS", logo: "/companies/my_aws.png", url: "https://aws.amazon.com/" },
     { name: "Beatport", logo: "/companies/Beatport-Black.png", url: "https://www.beatport.com/" },
     { name: "Evora", logo: "/companies/Evora-Main-Logo-1.webp", url: "https://evoraglobal.com/" },
     { name: "Longevity Partners", logo: "/companies/partner-longevity-partners-1-scaled.png", url: "https://longevity-partners.com/" },
@@ -402,7 +402,7 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
             {clients.map((client, index) => (
               <motion.div
                 key={index}
@@ -416,7 +416,7 @@ export default function Home() {
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full"
+                  className="block w-full h-full flex items-center justify-center"
                   aria-label={`Visit ${client.name} website`}
                 >
                   <Image
@@ -424,7 +424,7 @@ export default function Home() {
                     alt={client.name}
                     width={150}
                     height={80}
-                    className="w-full h-auto max-h-20 object-contain filter brightness-0 invert"
+                    className="max-w-full h-auto max-h-16 object-contain filter brightness-0 invert"
                     style={{ width: 'auto', height: 'auto' }}
                   />
                 </a>
