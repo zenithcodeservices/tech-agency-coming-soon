@@ -137,7 +137,7 @@ tech-agency-coming-soon/
 ### 🎯 **Business Features**
 - **Calendly Integration**: Multiple CTAs throughout for easy meeting scheduling
 - **Lead Generation**: Professional contact form with validation and toast notifications
-- **Email Link**: Direct email contact (4Thegreat@gmail.com)
+- **Email Link**: Direct email contact (zenithcodeservices@gmail.com)
 - **Social Proof**: Client testimonials and technology showcase
 
 ### 🎨 **Design & Animations**
@@ -170,7 +170,7 @@ tech-agency-coming-soon/
 Search and replace `https://calendly.com/zenithcodeservices/30min?month=2025-10` with your own Calendly URL in `app/page.tsx`
 
 ### Change Email
-Update `4Thegreat@gmail.com` in the Contact section
+Update `zenithcodeservices@gmail.com` in the Contact section
 
 ### Update Colors
 Edit `app/globals.css`:
@@ -254,5 +254,5 @@ Built with ❤️ by OPUS CREATIVES
 
 ---
 
-For questions or support, contact: 4Thegreat@gmail.com
+For questions or support, contact: zenithcodeservices@gmail.com
 

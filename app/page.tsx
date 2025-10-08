@@ -634,10 +634,10 @@ export default function Home() {
                     <Mail className="h-5 w-5 text-[#0000ff]" />
                   </div>
                   <a
-                    href="mailto:4Thegreat@gmail.com"
+                    href="mailto:zenithcodeservices@gmail.com"
                     className="text-gray-700 hover:text-[#0000ff] transition-colors font-medium"
                   >
-                    4Thegreat@gmail.com
+                    zenithcodeservices@gmail.com
                   </a>
                 </div>
 
@@ -763,19 +763,19 @@ export default function Home() {
               <h4 className="text-sm font-bold tracking-wider">CONNECT</h4>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="#"
+                  href="https://x.com/timlehanetech"
                   className="border-2 border-white px-6 py-3 hover:bg-white hover:text-[#0000ff] transition-all font-medium rounded-lg"
                 >
                   Twitter
                 </a>
                 <a
-                  href="#"
+                  href="https://linkedin.com/in/tim-lehane"
                   className="border-2 border-white px-6 py-3 hover:bg-white hover:text-[#0000ff] transition-all font-medium rounded-lg"
                 >
                   LinkedIn
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/zenithcodeservices"
                   className="border-2 border-white px-6 py-3 hover:bg-white hover:text-[#0000ff] transition-all font-medium rounded-lg"
                 >
                   GitHub
