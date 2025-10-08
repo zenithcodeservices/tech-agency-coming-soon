@@ -177,7 +177,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-5">
@@ -614,7 +614,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 bg-gray-50">
+      <section id="contact" className="py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <motion.div
