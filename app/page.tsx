@@ -308,7 +308,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-32 md:pt-24 overflow-hidden">
         {/* Animated Grid Background */}
         <div className="absolute inset-0 z-0">
           {/* Gradient base */}
