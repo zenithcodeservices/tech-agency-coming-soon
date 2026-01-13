@@ -35,6 +35,7 @@ export default function Home() {
   const [message, setMessage] = useState("")
   const [name, setName] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -44,6 +45,20 @@ export default function Home() {
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95])
+
+  // Generate fixed particle positions to avoid hydration mismatch
+  const particlePositions = useRef(
+    Array.from({ length: 20 }, () => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 5 + Math.random() * 5,
+    }))
+  )
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -358,22 +373,22 @@ export default function Home() {
           />
 
           {/* Floating particles */}
-          {[...Array(20)].map((_, i) => (
+          {isMounted && particlePositions.current.map((particle, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
               }}
               animate={{
                 y: [0, -100, 0],
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 5 + Math.random() * 5,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: particle.delay,
                 ease: "easeInOut",
               }}
             />
