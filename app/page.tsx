@@ -294,166 +294,276 @@ export default function Home() {
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Background Image with Overlays */}
+        {/* Animated Grid Background */}
         <div className="absolute inset-0 z-0">
-          {/* Animated gradient overlay */}
+          {/* Gradient base */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a1a] to-[#000033]" />
+          
+          {/* Animated grid pattern */}
           <motion.div
-            className="absolute inset-0 z-10"
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(0, 0, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 255, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "50px 50px",
+            }}
             animate={{
-              background: [
-                "linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,255,0.3) 100%)",
-                "linear-gradient(135deg, rgba(0,0,255,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.6) 100%)",
-                "linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,255,0.3) 100%)",
-              ],
+              backgroundPosition: ["0px 0px", "50px 50px"],
             }}
             transition={{
-              duration: 10,
+              duration: 20,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "linear",
             }}
           />
 
-          {/* Static background image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "url(/hero-bg.jpg)",
-              filter: "brightness(0.7) contrast(1.1)",
-            }}
-          />
-
-          {/* Animated color accent overlays */}
+          {/* Glowing orbs */}
           <motion.div
-            className="absolute top-0 right-0 w-1/3 h-1/3 rounded-full filter blur-[100px] opacity-30"
+            className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full filter blur-[120px]"
             style={{
-              background: "radial-gradient(circle, rgba(77,158,255,0.6) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(0,0,255,0.4) 0%, transparent 70%)",
             }}
             animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.4, 0.2],
-              x: [0, 50, 0],
+              scale: [1, 1.4, 1],
+              opacity: [0.3, 0.6, 0.3],
+              x: [0, 100, 0],
               y: [0, -50, 0],
             }}
             transition={{
-              duration: 8,
+              duration: 12,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           />
 
           <motion.div
-            className="absolute bottom-0 left-0 w-1/3 h-1/3 rounded-full filter blur-[100px] opacity-30"
+            className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full filter blur-[120px]"
             style={{
-              background: "radial-gradient(circle, rgba(0,0,255,0.5) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(100,100,255,0.3) 0%, transparent 70%)",
             }}
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.35, 0.2],
-              x: [0, -50, 0],
-              y: [0, 50, 0],
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.5, 0.2],
+              x: [0, -80, 0],
+              y: [0, 80, 0],
             }}
             transition={{
-              duration: 10,
+              duration: 15,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 1,
+              delay: 2,
             }}
           />
+
+          {/* Floating particles */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
         </div>
 
-        <motion.div style={{ opacity, scale }} className="container mx-auto px-4 z-10 text-center">
+        <motion.div style={{ opacity, scale }} className="container mx-auto px-4 z-10 text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-6xl mx-auto"
-            style={{
-              textShadow: "0 4px 20px rgba(0,0,0,0.5)",
-            }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight mb-8 leading-[1.1]">
-              <span className="block text-white drop-shadow-2xl">WEB</span>
-              <span className="block text-white drop-shadow-2xl">DEVELOPMENT</span>
-              <span className="block text-[#4d9eff] drop-shadow-2xl">AGENCY</span>
+            {/* Glassmorphic badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-block mb-8"
+            >
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 text-sm font-semibold text-white/90">
+                <span className="flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-blue-400" />
+                  Enterprise-Grade Web Solutions
+                </span>
+              </div>
+            </motion.div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter mb-10 leading-[0.95]">
+              <motion.span
+                className="block bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                BUILD
+              </motion.span>
+              <motion.span
+                className="block bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                FASTER
+              </motion.span>
+              <motion.span
+                className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                SCALE
+              </motion.span>
             </h1>
 
-            <p className="mt-8 text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
-              We build powerful web applications and digital platforms that scale.{" "}
-              <span className="font-semibold text-white">A technology-driven agency delivering robust, high-performance solutions.</span>
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-8 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
+            >
+              We architect and build{" "}
+              <span className="font-semibold text-white">high-performance web applications</span>{" "}
+              that drive growth. From concept to deployment.
+            </motion.p>
 
-            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <a
                 href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-[#0000ff] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#0000cc] transition-all hover:shadow-xl hover:-translate-y-1 inline-block text-center"
+                className="group relative bg-blue-600 text-white px-10 py-5 rounded-xl text-lg font-bold hover:bg-blue-700 transition-all hover:shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 inline-block text-center overflow-hidden"
               >
-                Start Your Project
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Start Your Project
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
                 href="#services"
-                className="border-2 border-white/50 bg-white/10 backdrop-blur-sm px-8 py-4 rounded-lg text-lg font-semibold text-white hover:bg-white/20 hover:border-white transition-all inline-block text-center"
+                className="border-2 border-white/30 bg-white/5 backdrop-blur-md px-10 py-5 rounded-xl text-lg font-bold text-white hover:bg-white/10 hover:border-white/50 transition-all inline-block text-center"
               >
-                View Our Services
+                Explore Services
               </a>
-            </div>
+            </motion.div>
 
-            <div className="mt-16 flex justify-center">
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="cursor-pointer"
-                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
-              >
-                <ArrowRight className="h-8 w-8 rotate-90 text-white/70" />
-              </motion.div>
-            </div>
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
+            >
+              {[
+                { number: "50+", label: "Projects" },
+                { number: "7+", label: "Companies" },
+                { number: "100%", label: "Success Rate" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-3xl md:text-4xl font-black text-white mb-2">{stat.number}</div>
+                  <div className="text-sm text-gray-400 font-medium uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              className="mt-16 cursor-pointer"
+              onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-white/30 hover:border-white/60 transition-colors">
+                <ArrowRight className="h-5 w-5 rotate-90 text-white/70" />
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </section>
 
       {/* Companies Section */}
-      <section className="py-24 bg-[#1a1a1a] text-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <section className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+              backgroundSize: "40px 40px",
+            }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-20"
+            className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight text-gray-300 mb-4">
-              Companies we've worked with
+            <div className="inline-block mb-6">
+              <span className="text-blue-400 text-sm font-bold uppercase tracking-wider bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
+                Trusted By
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              <span className="block text-white mb-2">Powering Innovation</span>
+              <span className="block bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
+                Across Industries
+              </span>
             </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+              From startups to Fortune 500 companies
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
             {clients.map((client, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center transition-all duration-300 opacity-70 hover:opacity-100"
+                className="group"
               >
                 <a
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full h-full flex items-center justify-center"
+                  className="block relative"
                   aria-label={`Visit ${client.name} website`}
                 >
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={150}
-                    height={80}
-                    className="max-w-full h-auto max-h-16 object-contain filter brightness-0 invert"
-                    style={{ width: 'auto', height: 'auto' }}
-                  />
+                  {/* Glassmorphic container */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 flex items-center justify-center h-24 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group-hover:scale-105">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      width={120}
+                      height={60}
+                      className="max-w-full h-auto max-h-12 object-contain filter brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity"
+                      style={{ width: 'auto', height: 'auto' }}
+                    />
+                  </div>
                 </a>
               </motion.div>
             ))}
@@ -462,18 +572,46 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 bg-gradient-to-br from-[#0000ff] via-[#0000ee] to-[#0000dd]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <p className="text-white/70 text-sm font-semibold uppercase tracking-wider mb-6">What We Build</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-              <span className="block mb-2">WEB APPS</span>
-              <span className="block mb-2">SAAS PLATFORMS</span>
-              <span className="block">API SOLUTIONS</span>
-            </h2>
-          </div>
+      <section id="services" className="py-32 bg-white relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
+              `,
+              backgroundSize: "40px 40px",
+            }}
+          />
+        </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <div className="inline-block mb-6">
+              <span className="text-blue-600 text-sm font-bold uppercase tracking-wider bg-blue-50 px-4 py-2 rounded-full">
+                What We Build
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 text-gray-900 tracking-tight">
+              Services That
+              <span className="block bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                Drive Growth
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+              From concept to deployment, we build scalable solutions that power modern businesses
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -481,126 +619,194 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 p-10 rounded-2xl hover:bg-white/20 hover:border-white/30 transition-all duration-300 cursor-pointer group"
+                className="group relative"
               >
-                <div className="space-y-6">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors text-white">
-                    {service.icon}
-                  </div>
+                {/* Gradient border effect */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur" />
+                
+                <div className="relative bg-white border-2 border-gray-100 p-8 rounded-2xl hover:border-transparent transition-all duration-300 h-full">
+                  <div className="space-y-5">
+                    {/* Icon with gradient background */}
+                    <div className="relative inline-flex">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl opacity-10 group-hover:opacity-20 transition-opacity" />
+                      <div className="relative w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">
+                        {service.icon}
+                      </div>
+                    </div>
 
-                  <h3 className="text-2xl font-bold tracking-tight text-white">{service.title}</h3>
-                  <p className="text-white/70 leading-relaxed text-base">{service.description}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
 
-                  <div className="flex items-center gap-2 text-white font-semibold opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all pt-2">
-                    <span className="text-sm">Learn more</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <div className="flex items-center gap-2 text-blue-600 font-semibold opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all pt-2">
+                      <span className="text-sm">Explore</span>
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-20 text-center"
+          >
             <a
               href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-[#0000ff] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 hover:shadow-xl transition-all"
+              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-10 py-5 rounded-xl text-lg font-bold hover:shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 transition-all"
             >
-              Start Your Project
+              <span>Let's Build Together</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-start max-w-7xl mx-auto">
+      <section id="about" className="py-32 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100/50 rounded-full filter blur-[150px] -z-0" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-purple-100/50 rounded-full filter blur-[150px] -z-0" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-start max-w-7xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-10"
             >
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-black mb-8">ABOUT</h2>
+              <div>
+                <div className="inline-block mb-6">
+                  <span className="text-blue-600 text-sm font-bold uppercase tracking-wider bg-blue-50 px-4 py-2 rounded-full">
+                    Who We Are
+                  </span>
+                </div>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-gray-900 mb-8">
+                  Building The
+                  <span className="block bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                    Future
+                  </span>
+                </h2>
+              </div>
 
-              <div className="space-y-8 text-lg leading-relaxed">
-                <p className="text-gray-700">
-                  We specialize in building scalable web applications and digital platforms using modern technologies.
+              <div className="space-y-6 text-lg leading-relaxed">
+                <p className="text-gray-700 font-light text-xl">
+                  We specialize in building <span className="font-semibold text-gray-900">scalable web applications</span> and digital platforms using modern technologies.
                   From startups to enterprises, we help businesses transform their ideas into powerful, high-performance
                   software solutions.
                 </p>
 
-                <p className="text-gray-700">
+                <p className="text-gray-700 font-light text-xl">
                   Whether you're building from scratch or looking to scale, we architect solutions that grow with your
                   business. Our approach combines clean code, best practices, and cutting-edge technology stacks.
                 </p>
 
-                <p className="font-semibold text-xl text-black">
-                  Delivering enterprise-grade solutions with startup agility.
-                </p>
+                <div className="pt-6 pl-6 border-l-4 border-blue-600">
+                  <p className="font-bold text-2xl text-gray-900">
+                    Enterprise-grade solutions with startup agility.
+                  </p>
+                </div>
               </div>
 
-              <div className="pt-12">
-                <h3 className="text-sm font-bold mb-6 tracking-wider text-black">CLIENT TESTIMONIAL</h3>
-                <blockquote className="border-l-4 border-[#0000ff] pl-6 italic text-lg text-gray-700">
-                  "Opus Creatives built our entire platform from the ground up. Their technical expertise and attention to
-                  scalability gave us a robust foundation that handles thousands of users seamlessly. Outstanding
-                  development team."
-                </blockquote>
-                <p className="mt-4 font-semibold text-black">— Sarah Johnson, CTO at TechStart</p>
+              <div className="pt-8 bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                    "
+                  </div>
+                  <div>
+                    <blockquote className="text-lg text-gray-700 leading-relaxed mb-4">
+                      Opus Creatives built our entire platform from the ground up. Their technical expertise and attention to
+                      scalability gave us a robust foundation that handles thousands of users seamlessly.
+                    </blockquote>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gray-200 rounded-full" />
+                      <div>
+                        <p className="font-bold text-gray-900">Sarah Johnson</p>
+                        <p className="text-sm text-gray-600">CTO at TechStart</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-12 space-y-10 border border-gray-100">
-                <h3 className="text-3xl font-bold text-black">TECHNOLOGY STACK</h3>
-                <p className="text-gray-700 text-lg font-medium">
-                  We work with modern, battle-tested technologies that scale as your business grows.
+              <div className="bg-white rounded-3xl p-10 space-y-8 border-2 border-gray-200 shadow-xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg" />
+                  <h3 className="text-3xl font-black text-gray-900">Tech Stack</h3>
+                </div>
+                <p className="text-gray-600 text-lg">
+                  Battle-tested technologies that scale with your business
                 </p>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 gap-4">
                   {technologies.map((tech, index) => (
                     <motion.div
                       key={tech}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
                       viewport={{ once: true }}
-                      className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center font-semibold min-h-[80px] flex items-center justify-center text-gray-800 text-base"
+                      className="group relative"
                     >
-                      <span>{tech}</span>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-sm" />
+                      <div className="relative bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-4 text-center font-bold text-gray-800 hover:border-transparent transition-all min-h-[70px] flex items-center justify-center">
+                        <span>{tech}</span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-[#0000ff] to-[#0000dd] text-white rounded-2xl p-12 space-y-6 shadow-2xl">
-                <h3 className="text-4xl font-bold leading-tight">MAKE YOUR BRAND UNFORGETTABLE.</h3>
-                <p className="text-xl text-white/90">Let's build something remarkable together.</p>
-                <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <a
-                    href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-white text-[#0000ff] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 hover:shadow-xl transition-all text-center"
-                  >
-                    Book a Meeting
-                  </a>
-                  <a
-                    href="#contact"
-                    className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#0000ff] transition-all text-center"
-                  >
-                    Send a Message
-                  </a>
+              <div className="bg-gradient-to-br from-blue-600 via-blue-500 to-blue-600 text-white rounded-3xl p-10 space-y-6 shadow-2xl shadow-blue-500/50 relative overflow-hidden">
+                {/* Decorative circles */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full" />
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full" />
+                
+                <div className="relative z-10">
+                  <Rocket className="w-12 h-12 mb-4" />
+                  <h3 className="text-4xl font-black leading-tight mb-4">
+                    Ready to Scale?
+                  </h3>
+                  <p className="text-xl text-white/90 mb-8">
+                    Let's transform your vision into reality
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 hover:shadow-xl transition-all"
+                    >
+                      <span>Book a Meeting</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition-all"
+                    >
+                      Send Message
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -609,139 +815,263 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-32 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20 max-w-4xl mx-auto">
-            <p className="text-sm font-semibold text-[#0000ff] uppercase tracking-wider mb-6">Our Approach</p>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">How We Work</h2>
-            <p className="text-xl text-gray-700 font-medium">
-              A systematic approach to developing web applications that deliver real business value.
-            </p>
-          </div>
+      <section id="process" className="py-32 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 opacity-10">
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "50px 50px",
+            }}
+            animate={{
+              backgroundPosition: ["0px 0px", "50px 50px"],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-20 max-w-4xl mx-auto"
+          >
+            <div className="inline-block mb-6">
+              <span className="text-blue-400 text-sm font-bold uppercase tracking-wider bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
+                Our Process
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight">
+              <span className="block mb-2">From Idea To</span>
+              <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
+                Launch In 3 Steps
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 font-light">
+              A proven methodology that delivers results, every time
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {processSteps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300 group cursor-default"
+                className="group relative"
               >
-                <div className="w-12 h-12 bg-[#0000ff] text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform rounded-xl">
-                  {index + 1}
+                {/* Connection line (except for last item) */}
+                {index < processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent z-0" />
+                )}
+
+                {/* Card */}
+                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 p-8 rounded-2xl hover:bg-white/20 hover:border-white/30 hover:-translate-y-2 transition-all duration-300 h-full">
+                  {/* Number badge */}
+                  <div className="mb-6 relative inline-flex">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-3xl font-black rounded-2xl group-hover:scale-110 transition-transform">
+                      {step.number}
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl font-black mb-4 text-white">{step.title}</h3>
+                  <p className="text-gray-300 leading-relaxed text-lg">{step.description}</p>
+
+                  {/* Decorative element */}
+                  <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-blue-500/10 rounded-full filter blur-2xl group-hover:bg-blue-500/20 transition-colors" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-black">{step.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mt-20"
+          >
+            <p className="text-gray-400 mb-6 text-lg">Ready to get started?</p>
+            <a
+              href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-10 py-5 rounded-xl text-lg font-bold hover:shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 transition-all"
+            >
+              <span>Schedule Discovery Call</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+      <section id="contact" className="py-32 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100/30 rounded-full filter blur-[150px]" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-100/30 rounded-full filter blur-[150px]" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-block mb-6">
+              <span className="text-blue-600 text-sm font-bold uppercase tracking-wider bg-blue-50 px-4 py-2 rounded-full">
+                Let's Talk
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-gray-900 tracking-tight">
+              Start Your
+              <span className="block bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                Next Project
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+              We typically respond within 24 hours
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-5 gap-12 items-start max-w-7xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="lg:col-span-2 space-y-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-black tracking-tight">GET IN TOUCH</h2>
-              <p className="text-xl text-gray-700 mb-8 font-medium">
-                Ready to start your project? Fill out the form and we'll get back to you within 24 hours.
-              </p>
-
               <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="bg-[#0000ff]/10 p-3 rounded-full">
-                    <Mail className="h-5 w-5 text-[#0000ff]" />
+                <div className="group">
+                  <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border-2 border-gray-200 hover:border-blue-500 transition-all">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Mail className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Email</p>
+                      <a
+                        href="mailto:zenithcodeservices@gmail.com"
+                        className="text-gray-900 hover:text-blue-600 transition-colors font-semibold text-lg"
+                      >
+                        zenithcodeservices@gmail.com
+                      </a>
+                    </div>
                   </div>
-                  <a
-                    href="mailto:zenithcodeservices@gmail.com"
-                    className="text-gray-700 hover:text-[#0000ff] transition-colors font-medium"
-                  >
-                    zenithcodeservices@gmail.com
-                  </a>
                 </div>
 
-                <div className="flex gap-4 mt-8">
-                  <a
-                    href="#"
-                    className="bg-gray-100 hover:bg-[#0000ff] hover:text-white p-3 rounded-full transition-all"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="h-5 w-5" />
-                  </a>
+                <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 space-y-6">
+                  <h3 className="text-xl font-bold text-gray-900">Follow Us</h3>
+                  <div className="flex gap-3">
+                    <a
+                      href="https://x.com/timlehanetech"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 bg-gray-100 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-400 rounded-xl flex items-center justify-center transition-all"
+                      aria-label="Twitter"
+                    >
+                      <Twitter className="h-5 w-5 text-gray-600 group-hover:text-white transition-colors" />
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/tim-lehane"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 bg-gray-100 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-400 rounded-xl flex items-center justify-center transition-all"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="h-5 w-5 text-gray-600 group-hover:text-white transition-colors" />
+                    </a>
+                    <a
+                      href="https://github.com/zenithcodeservices"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 bg-gray-100 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-400 rounded-xl flex items-center justify-center transition-all"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-5 w-5 text-gray-600 group-hover:text-white transition-colors" />
+                    </a>
+                  </div>
+                </div>
 
+                <div className="bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl p-8 text-white">
+                  <h3 className="text-2xl font-black mb-3">Prefer a Call?</h3>
+                  <p className="text-blue-100 mb-6">
+                    Schedule a 30-minute discovery call to discuss your project
+                  </p>
                   <a
-                    href="#"
-                    className="bg-gray-100 hover:bg-[#0000ff] hover:text-white p-3 rounded-full transition-all"
-                    aria-label="LinkedIn"
+                    href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-all"
                   >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-
-                  <a
-                    href="#"
-                    className="bg-gray-100 hover:bg-[#0000ff] hover:text-white p-3 rounded-full transition-all"
-                    aria-label="GitHub"
-                  >
-                    <Github className="h-5 w-5" />
+                    <span>Book Now</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="lg:col-span-3"
             >
-              <form onSubmit={handleSubmit} className="bg-white border-2 border-gray-200 p-10 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold mb-8 text-black">Send us a message</h3>
+              <form onSubmit={handleSubmit} className="bg-white border-2 border-gray-200 p-8 md:p-10 rounded-3xl shadow-xl">
+                <h3 className="text-2xl font-black mb-8 text-gray-900">Send us a message</h3>
 
                 <div className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-900">
-                      Name
+                    <label htmlFor="name" className="block text-sm font-bold mb-3 text-gray-900 uppercase tracking-wider">
+                      Name *
                     </label>
                     <Input
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="bg-gray-50 border-2 border-gray-300 focus:border-[#0000ff] focus:ring-[#0000ff] text-gray-900"
-                      placeholder="Your name"
+                      className="bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 text-gray-900 h-14 rounded-xl"
+                      placeholder="John Doe"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-900">
-                      Email
+                    <label htmlFor="email" className="block text-sm font-bold mb-3 text-gray-900 uppercase tracking-wider">
+                      Email *
                     </label>
                     <Input
                       id="email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="bg-gray-50 border-2 border-gray-300 focus:border-[#0000ff] focus:ring-[#0000ff] text-gray-900"
-                      placeholder="your.email@example.com"
+                      className="bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 text-gray-900 h-14 rounded-xl"
+                      placeholder="john@example.com"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-semibold mb-2 text-gray-900">
-                      Message
+                    <label htmlFor="message" className="block text-sm font-bold mb-3 text-gray-900 uppercase tracking-wider">
+                      Message *
                     </label>
                     <Textarea
                       id="message"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="bg-gray-50 border-2 border-gray-300 focus:border-[#0000ff] focus:ring-[#0000ff] min-h-[120px] text-gray-900"
+                      className="bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 min-h-[150px] text-gray-900 rounded-xl"
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -750,75 +1080,144 @@ export default function Home() {
                     type="submit"
                     disabled={isSubmitting}
                     className={cn(
-                      "w-full bg-[#0000ff] hover:bg-[#0000cc] text-white font-semibold py-6 text-lg",
+                      "group w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all",
                       isSubmitting && "opacity-70 cursor-not-allowed"
                     )}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <span className="flex items-center justify-center gap-2">
+                        Send Message
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    )}
                   </Button>
                 </div>
               </form>
-
-              <div className="mt-8 text-center">
-                <p className="text-gray-700 font-medium mb-4">Or</p>
-                <a
-                  href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block border-2 border-[#0000ff] text-[#0000ff] px-8 py-4 text-lg font-semibold hover:bg-[#0000ff] hover:text-white transition-all rounded-lg"
-                >
-                  Book a 30-Min Discovery Call
-                </a>
-              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-20 bg-[#0000ff] text-white border-t border-white/10">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid md:grid-cols-2 gap-16 mb-16">
-            <div className="space-y-8">
-              <h3 className="text-4xl font-bold tracking-tight">OPUS CREATIVES</h3>
-              <p className="text-xl text-white/80 leading-relaxed">
-                Building powerful web applications that drive business growth.
-              </p>
-            </div>
+      <footer className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
+        {/* Animated grid background */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "50px 50px",
+            }}
+          />
+        </div>
 
-            <div className="space-y-8">
-              <h4 className="text-sm font-bold tracking-wider">CONNECT</h4>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://x.com/timlehanetech"
-                  className="border-2 border-white px-6 py-3 hover:bg-white hover:text-[#0000ff] transition-all font-medium rounded-lg"
-                >
-                  Twitter
-                </a>
-                <a
-                  href="https://linkedin.com/in/tim-lehane"
-                  className="border-2 border-white px-6 py-3 hover:bg-white hover:text-[#0000ff] transition-all font-medium rounded-lg"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="https://github.com/zenithcodeservices"
-                  className="border-2 border-white px-6 py-3 hover:bg-white hover:text-[#0000ff] transition-all font-medium rounded-lg"
-                >
-                  GitHub
-                </a>
+        {/* Glowing orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-[150px]" />
+
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="py-20 border-b border-white/10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div className="lg:col-span-2 space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg" />
+                  <h3 className="text-3xl font-black tracking-tight">OPUS CREATIVES</h3>
+                </div>
+                <p className="text-lg text-gray-400 leading-relaxed max-w-md">
+                  Building powerful web applications that drive business growth. Enterprise-grade solutions with startup agility.
+                </p>
+                <div className="flex gap-3 pt-4">
+                  <a
+                    href="https://x.com/timlehanetech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group w-12 h-12 bg-white/5 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-400 border border-white/10 hover:border-transparent rounded-xl flex items-center justify-center transition-all"
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/tim-lehane"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group w-12 h-12 bg-white/5 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-400 border border-white/10 hover:border-transparent rounded-xl flex items-center justify-center transition-all"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
+                  </a>
+                  <a
+                    href="https://github.com/zenithcodeservices"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group w-12 h-12 bg-white/5 hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-400 border border-white/10 hover:border-transparent rounded-xl flex items-center justify-center transition-all"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h4 className="text-sm font-black uppercase tracking-wider text-gray-400">Quick Links</h4>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="#services" className="text-gray-300 hover:text-white transition-colors text-lg">
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#about" className="text-gray-300 hover:text-white transition-colors text-lg">
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#process" className="text-gray-300 hover:text-white transition-colors text-lg">
+                      Process
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#contact" className="text-gray-300 hover:text-white transition-colors text-lg">
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-6">
+                <h4 className="text-sm font-black uppercase tracking-wider text-gray-400">Get Started</h4>
+                <div className="space-y-4">
+                  <a
+                    href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 px-6 py-3 rounded-xl font-bold transition-all"
+                  >
+                    <span>Book a Call</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <p className="text-sm text-gray-400">
+                    <a href="mailto:zenithcodeservices@gmail.com" className="hover:text-white transition-colors">
+                      zenithcodeservices@gmail.com
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-white/20 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-col md:flex-row gap-6 text-sm">
-              <p>© 2025 OPUS CREATIVES LTD</p>
+          <div className="py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row gap-6 text-sm text-gray-400">
+              <p>© 2025 OPUS CREATIVES LTD. All rights reserved.</p>
               <div className="flex gap-6">
-                <a href="/privacy" className="hover:underline">
+                <a href="/privacy" className="hover:text-white transition-colors">
                   Privacy Policy
                 </a>
-                <a href="/terms" className="hover:underline">
+                <a href="/terms" className="hover:text-white transition-colors">
                   Terms of Service
                 </a>
               </div>
@@ -826,10 +1225,10 @@ export default function Home() {
 
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+              className="group w-12 h-12 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl flex items-center justify-center transition-all"
               aria-label="Back to top"
             >
-              <ArrowRight className="h-5 w-5 -rotate-90" />
+              <ArrowRight className="h-5 w-5 -rotate-90 text-gray-400 group-hover:text-white transition-colors" />
             </button>
           </div>
         </div>
