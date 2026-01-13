@@ -1,4 +1,7 @@
+import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,122 +51,125 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Send email via Brevo API
-    const brevoApiKey = process.env.BREVO_API_KEY;
-    
-    if (!brevoApiKey) {
-      console.error('BREVO_API_KEY is not configured');
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: 'OPUS Creatives Contact Form <onboarding@resend.dev>', // Update this with your verified domain
+      to: ['zenithcodeservices@gmail.com'], // Your email address
+      replyTo: email,
+      subject: `New Contact Form Submission from ${name}`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+              }
+              .header {
+                background: linear-gradient(135deg, #0000ff 0%, #0066ff 100%);
+                color: white;
+                padding: 30px 20px;
+                border-radius: 8px 8px 0 0;
+                text-align: center;
+              }
+              .header h1 {
+                margin: 0;
+                font-size: 24px;
+              }
+              .content {
+                background: #f9f9f9;
+                padding: 30px 20px;
+                border: 1px solid #e0e0e0;
+                border-top: none;
+              }
+              .field {
+                margin-bottom: 20px;
+                background: white;
+                padding: 15px;
+                border-radius: 6px;
+                border-left: 4px solid #0000ff;
+              }
+              .field-label {
+                font-weight: 600;
+                font-size: 12px;
+                text-transform: uppercase;
+                color: #666;
+                margin-bottom: 5px;
+              }
+              .field-value {
+                font-size: 16px;
+                color: #333;
+              }
+              .message-field {
+                background: white;
+                padding: 20px;
+                border-radius: 6px;
+                border-left: 4px solid #0000ff;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+              }
+              .footer {
+                background: #f9f9f9;
+                padding: 20px;
+                border: 1px solid #e0e0e0;
+                border-top: none;
+                border-radius: 0 0 8px 8px;
+                text-align: center;
+                color: #666;
+                font-size: 14px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <h1>📧 New Contact Form Submission</h1>
+            </div>
+            <div class="content">
+              <div class="field">
+                <div class="field-label">Name</div>
+                <div class="field-value">${name}</div>
+              </div>
+              
+              <div class="field">
+                <div class="field-label">Email</div>
+                <div class="field-value"><a href="mailto:${email}">${email}</a></div>
+              </div>
+              
+              <div class="field-label" style="margin-top: 20px; margin-bottom: 10px;">Message</div>
+              <div class="message-field">
+                ${message}
+              </div>
+            </div>
+            <div class="footer">
+              <p>This email was sent from the OPUS Creatives contact form.</p>
+              <p>Reply directly to this email to respond to ${name}.</p>
+            </div>
+          </body>
+        </html>
+      `,
+    });
+
+    if (error) {
+      console.error('Resend error:', error);
       return NextResponse.json(
-        { error: 'Email service not configured' },
+        { error: 'Failed to send email' },
         { status: 500 }
       );
     }
 
-    const emailData = {
-      sender: {
-        name: 'OPUS CREATIVES Website',
-        email: 'noreply@opuscreatives.com',
-      },
-      to: [
-        {
-          email: 'zenithcodeservices@gmail.com',
-          name: 'Zenith Code Services',
-        },
-      ],
-      subject: `New Contact Form Submission from ${name}`,
-      htmlContent: `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: #0000ff; color: white; padding: 20px; text-align: center; }
-            .content { background: #f9f9f9; padding: 30px; border: 1px solid #ddd; }
-            .field { margin-bottom: 20px; }
-            .label { font-weight: bold; color: #0000ff; }
-            .value { margin-top: 5px; }
-            .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <h1>New Contact Form Submission</h1>
-            </div>
-            <div class="content">
-              <div class="field">
-                <div class="label">Name:</div>
-                <div class="value">${name}</div>
-              </div>
-              <div class="field">
-                <div class="label">Email:</div>
-                <div class="value"><a href="mailto:${email}">${email}</a></div>
-              </div>
-              <div class="field">
-                <div class="label">Message:</div>
-                <div class="value">${message.replace(/\n/g, '<br>')}</div>
-              </div>
-            </div>
-            <div class="footer">
-              <p>This email was sent from the OPUS CREATIVES contact form</p>
-              <p>Timestamp: ${new Date().toLocaleString()}</p>
-            </div>
-          </div>
-        </body>
-        </html>
-      `,
-      textContent: `
-New Contact Form Submission
-
-Name: ${name}
-Email: ${email}
-
-Message:
-${message}
-
----
-Sent from OPUS CREATIVES website
-${new Date().toLocaleString()}
-      `,
-      replyTo: {
-        email: email,
-        name: name,
-      },
-    };
-
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'api-key': brevoApiKey,
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(emailData),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Brevo API error:', errorData);
-      throw new Error('Failed to send email');
-    }
-
-    const data = await response.json();
-    console.log('Email sent successfully:', data);
-
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Email sent successfully',
-        messageId: data.messageId 
-      },
+      { success: true, messageId: data?.id },
       { status: 200 }
     );
-
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Failed to send email. Please try again later.' },
+      { error: 'An unexpected error occurred' },
       { status: 500 }
     );
   }
