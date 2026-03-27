@@ -106,7 +106,7 @@ export default function Home() {
 
       toast({
         title: "Message sent!",
-        description: "We'll get back to you within 24 hours.",
+        description: "I'll get back to you within a few hours.",
       })
 
       setEmail("")
@@ -141,71 +141,72 @@ export default function Home() {
 
   const services = [
     {
+      icon: <Rocket className="h-10 w-10" />,
+      title: "MVP Development",
+      description:
+        "Turn your idea into a working product. From architecture to launch, I handle the full build so you can get to market fast and start learning from real users.",
+    },
+    {
+      icon: <Globe className="h-10 w-10" />,
+      title: "Mobile Apps",
+      description: "Cross-platform iOS & Android apps built with React Native — same codebase, native performance, shipped to App Store and Google Play.",
+    },
+    {
       icon: <Code className="h-10 w-10" />,
       title: "Web Applications",
       description:
-        "Custom web apps built with React, Next.js, Node.js, and TypeScript for maximum performance and scalability.",
+        "Production-grade React and Next.js apps built to scale from day one. Clean architecture, fast performance, and maintainable code.",
     },
     {
       icon: <Server className="h-10 w-10" />,
-      title: "API Development",
-      description: "RESTful & GraphQL APIs with proper authentication, rate limiting, and comprehensive documentation.",
+      title: "API & Backend",
+      description: "RESTful and GraphQL APIs with proper authentication, rate limiting, and comprehensive documentation. Node.js, Go, or .NET — whatever fits your stack.",
     },
     {
       icon: <Database className="h-10 w-10" />,
       title: "SaaS Platforms",
-      description: "Multi-tenant architecture with subscription management, analytics, and seamless integrations.",
-    },
-    {
-      icon: <Globe className="h-10 w-10" />,
-      title: "E-Commerce Solutions",
-      description: "High-performance online stores with payment processing, inventory management, and analytics.",
-    },
-    {
-      icon: <Rocket className="h-10 w-10" />,
-      title: "Cloud Infrastructure",
-      description: "Scalable AWS architecture, CI/CD pipelines, containerization with Docker, and monitoring systems.",
+      description: "Multi-tenant architecture, subscription management, third-party integrations, and analytics dashboards — the full SaaS stack.",
     },
     {
       icon: <Zap className="h-10 w-10" />,
-      title: "AI & Automation",
-      description: "OpenAI integration, ML models, and automated workflows to enhance your applications.",
+      title: "Cloud & DevOps",
+      description: "AWS architecture, CI/CD pipelines, infrastructure-as-code with Terraform, and containerisation with Docker — from an AWS Certified Developer.",
     },
   ]
 
   const processSteps = [
     {
       number: "01",
-      title: "Discover",
+      title: "Scope & Align",
       description:
-        "We dive deep into your vision, understanding your goals, audience, and unique challenges to create a solid foundation.",
+        "We get clear on your goals, constraints, and timeline. You'll get a technical spec and project plan before a single line of code is written.",
     },
     {
       number: "02",
-      title: "Architect & Develop",
+      title: "Build & Iterate",
       description:
-        "Our expert developers craft robust, scalable, and efficient solutions using cutting-edge technologies.",
+        "I build in focused sprints with regular check-ins. You see real progress every week — no black boxes, no surprises.",
     },
     {
       number: "03",
-      title: "Deploy & Scale",
-      description: "We build with precision, test thoroughly, and launch with confidence—ensuring your product exceeds expectations.",
+      title: "Ship & Support",
+      description: "We launch to production with proper testing, monitoring, and documentation. I stay on hand post-launch to make sure everything runs smoothly.",
     },
   ]
 
   const technologies = [
     "Next.js",
     "React",
+    "React Native",
     "TypeScript",
     "Node.js",
     "GraphQL",
     "AWS",
     "Docker",
     "PostgreSQL",
-    "Python",
-    "TailwindCSS",
+    "Terraform",
+    "Go",
     "CI/CD",
-    "Framer Motion",
   ]
 
   const clients = [
@@ -246,7 +247,7 @@ export default function Home() {
                 Contact
               </a>
               <a
-                href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                href="https://calendly.com/zenithcodeservices/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#0000ff] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000cc] hover:shadow-xl hover:-translate-y-0.5 transition-all"
@@ -296,7 +297,7 @@ export default function Home() {
               Contact
             </a>
             <a
-              href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+              href="https://calendly.com/zenithcodeservices/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#0000ff] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000cc] transition-all w-full text-center mt-4"
@@ -412,7 +413,7 @@ export default function Home() {
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 text-sm font-semibold text-white/90">
                 <span className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-blue-400" />
-                  Enterprise-Grade Web Solutions
+                  Senior Full Stack Engineer · AWS Certified · London
                 </span>
               </div>
             </motion.div>
@@ -450,9 +451,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-8 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              We architect and build{" "}
-              <span className="font-semibold text-white">high-performance web applications</span>{" "}
-              that drive growth. From concept to deployment.
+              I help funded startups and growing companies{" "}
+              <span className="font-semibold text-white">ship faster</span>{" "}
+              — without the cost and risk of building a full-time dev team.
             </motion.p>
 
             <motion.div
@@ -462,7 +463,7 @@ export default function Home() {
               className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
             >
               <a
-                href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                href="https://calendly.com/zenithcodeservices/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative bg-blue-600 text-white px-10 py-5 rounded-xl text-lg font-bold hover:bg-blue-700 transition-all hover:shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 inline-block text-center overflow-hidden"
@@ -489,9 +490,9 @@ export default function Home() {
               className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
             >
               {[
-                { number: "50+", label: "Projects" },
-                { number: "7+", label: "Companies" },
-                { number: "100%", label: "Success Rate" },
+                { number: "5+", label: "Years Experience" },
+                { number: "10+", label: "Products Shipped" },
+                { number: "2x", label: "AWS Certified" },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <div className="text-3xl md:text-4xl font-black text-white mb-2">{stat.number}</div>
@@ -537,17 +538,17 @@ export default function Home() {
           >
             <div className="inline-block mb-6">
               <span className="text-blue-400 text-sm font-bold uppercase tracking-wider bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
-                Trusted By
+                Where I've Worked
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
-              <span className="block text-white mb-2">Powering Innovation</span>
+              <span className="block text-white mb-2">Experience Across</span>
               <span className="block bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
-                Across Industries
+                Industries & Scale
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-              From startups to Fortune 500 companies
+              From seed-stage startups to global enterprises
             </p>
           </motion.div>
 
@@ -622,7 +623,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
-              From concept to deployment, we build scalable solutions that power modern businesses
+              From MVP to production — full-stack expertise across web, mobile, APIs, and cloud
             </p>
           </motion.div>
 
@@ -675,7 +676,7 @@ export default function Home() {
             className="mt-20 text-center"
           >
             <a
-              href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+              href="https://calendly.com/zenithcodeservices/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-10 py-5 rounded-xl text-lg font-bold hover:shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 transition-all"
@@ -705,52 +706,61 @@ export default function Home() {
               <div>
                 <div className="inline-block mb-6">
                   <span className="text-blue-600 text-sm font-bold uppercase tracking-wider bg-blue-50 px-4 py-2 rounded-full">
-                    Who We Are
+                    Who I Am
                   </span>
                 </div>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-gray-900 mb-8">
-                  Building The
+                  Hi, I'm
                   <span className="block bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-                    Future
+                    Tim Lehane
                   </span>
                 </h2>
               </div>
 
               <div className="space-y-6 text-lg leading-relaxed">
                 <p className="text-gray-700 font-light text-xl">
-                  We specialize in building <span className="font-semibold text-gray-900">scalable web applications</span> and digital platforms using modern technologies.
-                  From startups to enterprises, we help businesses transform their ideas into powerful, high-performance
-                  software solutions.
+                  I'm a senior full stack engineer with 5+ years building <span className="font-semibold text-gray-900">production software</span> at companies like Beatport, EVORA Global, and AWS. I've shipped mobile apps, SaaS platforms, and cloud infrastructure used by thousands of users every day.
                 </p>
 
                 <p className="text-gray-700 font-light text-xl">
-                  Whether you're building from scratch or looking to scale, we architect solutions that grow with your
-                  business. Our approach combines clean code, best practices, and cutting-edge technology stacks.
+                  Now I channel that experience into Opus Creatives — helping funded startups and growing businesses build the right thing, fast, without the overhead of a full in-house team.
                 </p>
 
                 <div className="pt-6 pl-6 border-l-4 border-blue-600">
                   <p className="font-bold text-2xl text-gray-900">
-                    Enterprise-grade solutions with startup agility.
+                    Senior-engineer quality, startup speed.
                   </p>
                 </div>
               </div>
 
               <div className="pt-8 bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
-                    "
+                <h3 className="font-black text-gray-900 text-lg mb-5 uppercase tracking-wide">Credentials</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Zap className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900">AWS Certified Developer Associate</p>
+                      <p className="text-sm text-gray-600">+ AWS Cloud Practitioner</p>
+                    </div>
                   </div>
-                  <div>
-                    <blockquote className="text-lg text-gray-700 leading-relaxed mb-4">
-                      Opus Creatives built our entire platform from the ground up. Their technical expertise and attention to
-                      scalability gave us a robust foundation that handles thousands of users seamlessly.
-                    </blockquote>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gray-200 rounded-full" />
-                      <div>
-                        <p className="font-bold text-gray-900">Sarah Johnson</p>
-                        <p className="text-sm text-gray-600">CTO at TechStart</p>
-                      </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Rocket className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900">UCC CS Entrepreneurship Award</p>
+                      <p className="text-sm text-gray-600">Featured in Irish Examiner & Silicon Republic</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Code className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900">BSc Computer Science</p>
+                      <p className="text-sm text-gray-600">University College Cork</p>
                     </div>
                   </div>
                 </div>
@@ -770,7 +780,7 @@ export default function Home() {
                   <h3 className="text-3xl font-black text-gray-900">Tech Stack</h3>
                 </div>
                 <p className="text-gray-600 text-lg">
-                  Battle-tested technologies that scale with your business
+                  Technologies I use in production every day
                 </p>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -800,14 +810,14 @@ export default function Home() {
                 <div className="relative z-10">
                   <Rocket className="w-12 h-12 mb-4" />
                   <h3 className="text-4xl font-black leading-tight mb-4">
-                    Ready to Scale?
+                    Ready to Ship?
                   </h3>
                   <p className="text-xl text-white/90 mb-8">
-                    Let's transform your vision into reality
+                    Book a free 30-minute call — no pitch, just an honest conversation about your project
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a
-                      href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                      href="https://calendly.com/zenithcodeservices/30min"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 hover:shadow-xl transition-all"
@@ -873,7 +883,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl text-gray-300 font-light">
-              A proven methodology that delivers results, every time
+              Clear communication and real progress at every step
             </p>
           </motion.div>
 
@@ -921,7 +931,7 @@ export default function Home() {
           >
             <p className="text-gray-400 mb-6 text-lg">Ready to get started?</p>
             <a
-              href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+              href="https://calendly.com/zenithcodeservices/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-10 py-5 rounded-xl text-lg font-bold hover:shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 transition-all"
@@ -959,7 +969,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
-              We typically respond within 24 hours
+              I typically respond within a few hours
             </p>
           </motion.div>
 
@@ -990,7 +1000,7 @@ export default function Home() {
                 </div>
 
                 <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 space-y-6">
-                  <h3 className="text-xl font-bold text-gray-900">Follow Us</h3>
+                  <h3 className="text-xl font-bold text-gray-900">Connect</h3>
                   <div className="flex gap-3">
                     <a
                       href="https://x.com/timlehanetech"
@@ -1028,7 +1038,7 @@ export default function Home() {
                     Schedule a 30-minute discovery call to discuss your project
                   </p>
                   <a
-                    href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                    href="https://calendly.com/zenithcodeservices/30min"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-all"
@@ -1048,7 +1058,7 @@ export default function Home() {
               className="lg:col-span-3"
             >
               <form onSubmit={handleSubmit} className="bg-white border-2 border-gray-200 p-8 md:p-10 rounded-3xl shadow-xl">
-                <h3 className="text-2xl font-black mb-8 text-gray-900">Send us a message</h3>
+                <h3 className="text-2xl font-black mb-8 text-gray-900">Send me a message</h3>
 
                 <div className="space-y-6">
                   <div>
@@ -1087,7 +1097,7 @@ export default function Home() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       className="bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:ring-blue-500 min-h-[150px] text-gray-900 rounded-xl"
-                      placeholder="Tell us about your project..."
+                      placeholder="Tell me about your project — what are you building and where are you stuck?"
                     />
                   </div>
 
@@ -1144,7 +1154,7 @@ export default function Home() {
                   <h3 className="text-3xl font-black tracking-tight">OPUS CREATIVES</h3>
                 </div>
                 <p className="text-lg text-gray-400 leading-relaxed max-w-md">
-                  Building powerful web applications that drive business growth. Enterprise-grade solutions with startup agility.
+                  Senior full stack engineering for startups and growing businesses. Ship faster without hiring a full-time team.
                 </p>
                 <div className="flex gap-3 pt-4">
                   <a
@@ -1207,7 +1217,7 @@ export default function Home() {
                 <h4 className="text-sm font-black uppercase tracking-wider text-gray-400">Get Started</h4>
                 <div className="space-y-4">
                   <a
-                    href="https://calendly.com/zenithcodeservices/30min?month=2025-10"
+                    href="https://calendly.com/zenithcodeservices/30min"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 px-6 py-3 rounded-xl font-bold transition-all"
@@ -1227,7 +1237,7 @@ export default function Home() {
 
           <div className="py-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col md:flex-row gap-6 text-sm text-gray-400">
-              <p>© 2025 OPUS CREATIVES LTD. All rights reserved.</p>
+              <p>© 2026 OPUS CREATIVES. All rights reserved.</p>
               <div className="flex gap-6">
                 <a href="/privacy" className="hover:text-white transition-colors">
                   Privacy Policy

@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "OPUS CREATIVES - Digital Agency | Web Development",
-  description: "A technology-driven agency helping brands move faster, smarter, and bolder. We build powerful web applications and digital platforms that scale.",
-  keywords: "web development, web applications, brand development, digital agency, UI/UX, Next.js, React, TypeScript",
-  authors: [{ name: "OPUS CREATIVES" }],
+  title: "Opus Creatives | Senior Full Stack Engineering for Startups",
+  description: "Tim Lehane — senior full stack engineer helping funded startups and growing businesses ship faster. Web apps, mobile, APIs, and cloud infrastructure. AWS Certified. Based in London.",
+  keywords: "freelance developer London, senior full stack engineer, React Next.js developer, React Native mobile apps, AWS certified developer, startup MVP development, Node.js TypeScript",
+  authors: [{ name: "Tim Lehane" }],
   openGraph: {
-    title: "OPUS CREATIVES - Digital Agency",
-    description: "We build powerful web applications and digital platforms that scale.",
+    title: "Opus Creatives | Senior Full Stack Engineering for Startups",
+    description: "Ship faster without hiring a full-time dev team. Senior-engineer quality, startup speed. AWS Certified. Based in London.",
     type: "website",
   },
 }
