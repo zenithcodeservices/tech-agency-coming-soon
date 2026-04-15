@@ -990,10 +990,10 @@ export default function Home() {
                     <div>
                       <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Email</p>
                       <a
-                        href="mailto:zenithcodeservices@gmail.com"
+                        href="mailto:tim@opuscreatives.dev"
                         className="text-gray-900 hover:text-blue-600 transition-colors font-semibold text-lg"
                       >
-                        zenithcodeservices@gmail.com
+                        tim@opuscreatives.dev
                       </a>
                     </div>
                   </div>
@@ -1226,8 +1226,8 @@ export default function Home() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                   <p className="text-sm text-gray-400">
-                    <a href="mailto:zenithcodeservices@gmail.com" className="hover:text-white transition-colors">
-                      zenithcodeservices@gmail.com
+                    <a href="mailto:tim@opuscreatives.dev" className="hover:text-white transition-colors">
+                      tim@opuscreatives.dev
                     </a>
                   </p>
                 </div>

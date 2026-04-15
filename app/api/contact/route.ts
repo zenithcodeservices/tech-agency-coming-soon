@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'OPUS Creatives Contact Form <onboarding@resend.dev>', // Update this with your verified domain
-      to: ['zenithcodeservices@gmail.com'], // Your email address
+      to: ['tim@opuscreatives.dev'], // Forwards to inbox via Cloudflare Email Routing
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
